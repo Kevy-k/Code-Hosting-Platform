@@ -1,0 +1,608 @@
+
+
+/*--------------------------------------------------------------------- File Name: style.css ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+
+/* @import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i'); */
+
+/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
+ 2) font-family: 'Poppins', sans-serif;
+ ----------------------------------------*****/
+
+
+/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
+
+@import url(animate.min.css);
+@import url(normalize.css);
+@import url(meanmenu.css);
+@import url(owl.carousel.min.css);
+@import url(slick.css);
+@import url(jquery-ui.css);
+@import url(nice-select.css);
+
+/*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com"); 
+@import url( "https://fonts.gstatic.com");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap"); 
+* {
+     box-sizing: border-box !important;
+}
+
+html {
+     scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+     display: none;
+}
+body {
+     color: #000000;
+     font-size: 14px;
+     line-height: 1.80857;
+     font-weight: normal;
+     background:linear-gradient(to top left,#026747 40%, #000000 60%);
+     transition: ease-in 0.8s;
+}
+
+a {
+     color: #1f1f1f;
+     text-decoration: none !important;
+     outline: none !important;
+     -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+     -ms-transition: all .3s ease-in-out;
+     -o-transition: all .3s ease-in-out;
+     transition: all .3s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+     letter-spacing: 0;
+     font-weight: normal;
+     position: relative;
+     padding: 0 0 10px 0;
+     font-weight: normal;
+     line-height: normal;
+     color: #111111;
+     margin: 0
+}
+
+h1 {
+     font-size: 24px
+}
+
+h2 {
+     font-size: 22px
+}
+
+h3 {
+     font-size: 18px
+}
+
+h4 {
+     font-size: 16px
+}
+
+h5 {
+     font-size: 14px
+}
+
+h6 {
+     font-size: 13px
+}
+
+*,
+*::after,
+*::before {
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+     color: #212121;
+     text-decoration: none!important;
+     opacity: 1
+}
+
+button:focus {
+     outline: none;
+}
+
+ul,
+li,
+ol {
+     margin: 0px;
+     padding: 0px;
+     list-style: none;
+}
+
+p {
+     margin: 0px;
+     font-weight: 300;
+     font-size: 15px;
+     line-height: 24px;
+}
+
+a {
+     color: #222222;
+     text-decoration: none;
+     outline: none !important;
+}
+
+a,
+.btn {
+     text-decoration: none !important;
+     outline: none !important;
+     -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+     -ms-transition: all .3s ease-in-out;
+     -o-transition: all .3s ease-in-out;
+     transition: all .3s ease-in-out;
+}
+
+img {
+     max-width: 100%;
+     height: auto;
+}
+
+ :focus {
+     outline: 0;
+}
+
+.btn-custom {
+     margin-top: 20px;
+     background-color: transparent !important;
+     border: 2px solid #ddd;
+     padding: 12px 40px;
+     font-size: 16px;
+}
+
+.lead {
+     font-size: 18px;
+     line-height: 30px;
+     color: #767676;
+     margin: 0;
+     padding: 0;
+}
+
+.form-control:focus {
+     border-color: #ffffff !important;
+     box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
+}
+
+.navbar-form input {
+     border: none !important;
+}
+
+.badge {
+     font-weight: 500;
+}
+
+blockquote {
+     margin: 20px 0 20px;
+     padding: 30px;
+}
+
+button {
+     border: 0;
+     margin: 0;
+     padding: 0;
+     cursor: pointer;
+}
+
+.full {
+     float: left;
+     width: 100%;
+}
+
+.layout_padding {
+     padding-top: 90px;
+     padding-bottom: 90px;
+}
+
+.layout_padding_2 {
+     padding-top: 75px;
+     padding-bottom: 75px;
+}
+
+.light_silver {
+     background: #f9f9f9;
+}
+
+.theme_bg {
+     background: #38c8a8;
+}
+
+.margin_top_30 {
+     margin-top: 30px !important;
+}
+
+.full {
+     width: 100%;
+     float: left;
+     margin: 0;
+     padding: 0;
+}
+
+
+/**-- heading section --**/
+
+
+/*---------------------------- preloader area ----------------------------*/
+
+.loader_bg {
+     position: fixed;
+     z-index: 9999999;
+     background: #fff;
+     width: 100%;
+     height: 100%;
+}
+
+.loader {
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     left: 0;
+     top: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.loader img {
+     width: 280px;
+}
+
+
+/*-- navigation--*/
+
+.navigation.navbar {
+     float: right;
+}
+
+.navigation.navbar-dark .navbar-nav .nav-link {
+     padding: 0 25px;
+     color: #fff;
+     font-size: 16px;
+     line-height: 20px;
+}
+
+.navigation.navbar-dark .navbar-nav .nav-link:focus,
+.navigation.navbar-dark .navbar-nav .nav-link:hover {
+     color: rgb(10, 237, 124);
+}
+
+.navigation.navbar-dark .navbar-nav .active>.nav-link,
+.navigation.navbar-dark .navbar-nav .nav-link.active,
+.navigation.navbar-dark .navbar-nav .nav-link.show,
+.navigation.navbar-dark .navbar-nav .show>.nav-link {
+     color: rgb(10, 237, 124);
+}
+
+
+/*-- header area --*/
+
+
+/*--------------------------------------------------------------------- top banner area ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- layout new css ---------------------------------------------------------------------*/
+
+.header {
+     background-color: transparent;
+     width: 100%;
+     padding: 40px 40px 40px 40px;
+}
+
+.logo a {
+     font-size: 40px;
+     font-weight: bold;
+     color: #fff;
+     line-height: 40px;
+     /* text-shadow: 10px 10px 10px rgb(10, 237, 124); */
+     animation: loginani 2s infinite forwards
+}
+@keyframes loginani {
+     0%{
+          text-shadow: 10px 10px 10px rgb(10, 237, 124);
+     }
+     30%{
+          text-shadow: 10px 10px 8px rgb(10, 237, 124);
+     }
+     40%{
+          text-shadow: 10px 10px 6px rgb(10, 237, 124);    
+     }
+     60%{
+          text-shadow: 10px 10px 4px rgb(10, 237, 124);
+     }
+     80%{
+          text-shadow: 10px 10px 6px rgb(10, 237, 124);
+     }
+     90%{
+          text-shadow: 10px 10px 8px rgb(10, 237, 124);
+     }
+     100%{
+          text-shadow: 10px 10px 10px rgb(10, 237, 124);
+     }
+}
+
+.banner_main {
+     /* background: #161616; */
+     background-color: transparent;
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     padding-bottom: 90px;
+     height: 650px;
+}
+
+.text-bg h1 {
+     color: #fff;
+     font-size: 60px;
+     line-height: 80px;
+     padding-bottom: 25px;
+     font-weight: bold;
+     /* text-shadow: 4px 50px 100px white; */
+}
+.text-img img{
+     border-radius: 30px;
+     margin-top: 50px;
+     /* box-shadow: 220px 90px  3000px rgb(10, 237, 124); */
+     animation: imganimation 3s infinite;
+     /* box-shadow: 2px 5px 10px rgb(35, 173, 25); */
+}
+/* @keyframes imganimation {
+     0%{
+           box-shadow: 220px 90px 3000px rgb(10, 237, 124);
+     }
+     30%{
+       box-shadow: 215px 90px 3000px rgb(10, 237, 124);
+     }
+     40%{
+       box-shadow: 210px 90px 3000px rgb(10, 237, 124);    
+     }
+     60%{
+       box-shadow: 205px 90px 3000px rgb(10, 237, 124);
+     }
+     80%{
+       box-shadow: 210px 90px 3000px rgb(10, 237, 124);
+     }
+     90%{
+       box-shadow: 215px 90px 3000px rgb(10, 237, 124);
+     }
+     100%{
+            box-shadow: 220px 90px 3000px rgb(10, 237, 124);
+     }
+} */
+.text-bg a{
+     border-radius: 5px;
+}
+.text-bg span {
+     color: #fdd430;
+     font-size: 40px;
+     line-height: 35px;
+     font-weight: bold;
+}
+
+.text-bg p {
+     color: #fff;
+     font-size: 17px;
+     line-height: 28px;
+     padding: 40px 0;
+}
+
+.text-bg a {
+     font-size: 16px;
+     background-color: #000000;
+     color: white;
+     padding: 10px 0px;
+     width: 100%;
+     max-width: 190px;
+     text-align: center;
+     display: inline-block;
+     text-transform: uppercase;
+     box-shadow: 0px 0px 5px rgb(15, 204, 43);
+}
+
+.text-bg a:hover {
+     font-size: 20px;
+     color: #fff;
+}
+
+.text-img figure {
+     margin: 0px;
+}
+
+.text-img figure img {
+     width: 100%;
+}
+
+.titlepage {
+     text-align: center;
+     padding-bottom: 60px;
+}
+
+.titlepage h2 {
+     font-size: 45px;
+     color: #0c0f38;
+     line-height: 40px;
+     font-weight: bold;
+     padding: 0;
+}
+
+
+/** Hosting section **/
+
+.hosting {
+     padding-top: 90px;
+     
+}
+
+.web_hosting {
+     text-align: center;
+     
+}
+.titlepage h2{
+color: white;
+}
+.web_hosting figure {
+     margin: 0;
+}
+
+.web_hosting p {
+     color:white;
+     font-size: 17px;
+     line-height: 28px;
+     padding: 40px 50px;
+}
+
+.web_hosting a {
+     font-size: 16px;
+     background-color: #000;
+     color: #fff;
+     padding: 10px 0px;
+     width: 100%;
+     max-width: 190px;
+     text-align: center;
+     display: inline-block;
+     text-transform: uppercase;
+     font-weight: 400;
+     margin-top: 10px;
+}
+
+.web_hosting a:hover {
+     background-color: #000000;
+     color: #fff;
+}
+
+
+/** end Hosting section **/
+
+
+/** Services section **/
+
+.Services {
+     
+     padding: 60px 0;
+     font-family: Poppins;
+     background-color: black;
+}
+.Services .container .row{
+     /* box-shadow: -220px 90px  3000px rgb(10, 237, 124); */
+     animation: serviceani 2s infinite;
+     border-radius: 50px;
+}
+/* @keyframes serviceani {
+     0%{
+           box-shadow: -220px 90px 3000px rgb(10, 237, 124);
+     }
+     30%{
+       box-shadow: -225px 90px 2500px rgb(10, 237, 124);
+     }
+     40%{
+       box-shadow: -230px 90px 2000px rgb(10, 237, 124);    
+     }
+     60%{
+       box-shadow: -235px 90px 1500px rgb(10, 237, 124);
+     }
+     80%{
+       box-shadow: -230px 90px 2000px rgb(10, 237, 124);
+     }
+     90%{
+       box-shadow: -225px 90px 2500px rgb(10, 237, 124);
+     }
+     100%{
+            box-shadow: -220px 90px 3000px rgb(10, 237, 124);
+     }
+} */
+.Services .titlepage {
+     text-align: center;
+}
+
+.Services .titlepage h2 {
+     color: #fff;
+     padding-bottom: 20px;
+}
+
+.Services .titlepage p {
+     color: #fff;
+}
+.Services .Services-box i {
+     background: #fff;
+     width: 100px;
+     height: 100px;
+     border-radius: 50px;
+     display: inline-block;
+     padding-top: 19px;
+}
+
+.Services .Services-box i:hover {
+     background: #ddd;
+}
+
+.Services .Services-box h3 {
+     padding: 20px 0px 20px 0px;
+     font-size: 20px;
+     line-height: 25px;
+     color: #fff;
+     display: block;
+     font-weight: 500;
+}
+
+.Services .Services-box {
+     text-align: center;
+     /* background-color: rgb(12, 12, 12); */
+     border-radius: 20px;
+     /* border: #cecfd7 solid 2px; */
+     padding: 40px;
+     transition: ease-in all 0.5s;
+     margin-bottom: 30px;
+}
+
+.Services .Services-box:hover {
+   
+     transition: ease-in-all 0.7s;
+     cursor: pointer;
+}
+
+.Services .Services-box p {
+     font-size: 16px;
+     line-height: 24px;
+     color: #fff;
+}
+
+.read_more {
+     font-size: 16px;
+     background-color: #fff;
+     color: #000;
+     padding: 10px 0px;
+     width: 100%;
+     max-width: 190px;
+     display: flex;
+     justify-content: center;
+     text-align: center;
+     margin: 0 auto;
+     margin-top: 20px;
+}
+
+.read_more:hover {
+     background: black;
+     color : white;
+     box-shadow: 0px 0px 8px rgb(255, 255, 255); 
+}
+
+
+/** end Services section **/
+
+

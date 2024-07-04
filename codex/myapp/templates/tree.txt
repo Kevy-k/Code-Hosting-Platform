@@ -1,0 +1,109 @@
+# models.py
+from django.db import models
+
+class Folder(models.Model):
+    name = models.CharField(max_length=100)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+
+class File(models.Model):
+    name = models.CharField(max_length=100)
+    folder = models.ForeignKey(Folder, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='files/')
+
+
+
+
+
+
+
+
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import File, Folder
+
+def handle_uploaded_file(file, parent_folder=None):
+    # Check if the uploaded item is a folder
+    if file.name.endswith('/'):
+        # Save the folder to the database
+        folder = Folder(name=file.name, parent_folder=parent_folder)
+        folder.save()
+        # Recursively handle subfolders and files within this folder
+        for subfile in file.chunks():
+            handle_uploaded_file(subfile, parent_folder=folder)
+    else:
+        # Save the file to the database
+        new_file = File(name=file.name, parent_folder=parent_folder)
+        new_file.file = file
+        new_file.save()
+
+def upload_files(request):
+    if request.method == 'POST' and request.FILES:
+        # Get the uploaded files
+        uploaded_files = request.FILES.getlist('files')
+
+        for uploaded_file in uploaded_files:
+            handle_uploaded_file(uploaded_file)
+
+        return HttpResponse('Files uploaded successfully')
+    else:
+        return render(request, 'upload.html')
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File and Folder Tree</title>
+<style>
+    ul {
+        list-style-type: none;
+    }
+    ul ul {
+        margin-left: 20px;
+    }
+    .folder {
+        color: blue;
+        cursor: pointer;
+    }
+    .file {
+        color: green;
+    }
+</style>
+</head>
+<body>
+    <ul id="file-tree">
+        <li class="folder">Root
+            <ul>
+                <li class="folder">Folder 1
+                    <ul>
+                        <li class="file">File 1</li>
+                        <li class="file">File 2</li>
+                    </ul>
+                </li>
+                <li class="folder">Folder 2
+                    <ul>
+                        <li class="file">File 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+<script>
+    // Add click event listener to folders to toggle visibility
+    var folders = document.querySelectorAll('.folder');
+    folders.forEach(function(folder) {
+        folder.addEventListener('click', function() {
+            this.querySelector('ul').classList.toggle('hidden');
+        });
+    });
+</script>
+</body>
+</html>
+
+
+141212
+10181c
+131826

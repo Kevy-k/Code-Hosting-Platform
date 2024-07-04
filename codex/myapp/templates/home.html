@@ -1,0 +1,476 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <!-- site metas -->
+    <title>CodeX</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'hback/css/bootstrap.min.css' %}" />
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'hback/css/style.css' %}" />
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static 'hback/css/responsive.css' %}" />
+    <!-- fevicon -->
+    <link
+      rel="icon"
+      href="{% static 'hback/images/fevicon.png' %}"
+      type="image/gif"
+    />
+    <!-- Scrollbar Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'hback/css/jquery.mCustomScrollbar.min.css'% }"
+    />
+    <!-- Tweaks for older IEs-->
+    <!-- <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen"
+    />
+    <link rel="stylesheet" href="{% static 'hback/css/reg.css' %}" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+  </head>
+
+  <!-- body -->
+  <body class="main-layout">
+    <!-- loader  -->
+    <!-- <div class="loader_bg">
+      <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+    </div> -->
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+      <!-- header inner -->
+      <div class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+              <div class="full">
+                <div class="center-desk">
+                  <div class="logo">
+                    <a href="/in/">codeX</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+              <nav class="navigation navbar navbar-expand-md navbar-dark">
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarsExample04"
+                  aria-controls="navbarsExample04"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExample04">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"> About </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#contact"> Contact</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/usrlogin/">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#myform" onclick="getform()"
+                        >Sign Up</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header inner -->
+    <!-- end header -->
+    <!-- banner -->
+    <section class="banner_main">
+      <div class="container">
+        <div class="row d_flex">
+          <div class="col-md-5">
+            <div class="text-bg">
+              <h1>
+                Code<br />
+                Hosting
+              </h1>
+              <span>And Code Management</span>
+              <p>
+                A source-code hosting platform where you can collaborate with
+                other developers for an improved and fast development
+              </p>
+              <a href="#myform" onclick="getform()">Start Coding</a>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="text-img">
+              <figure><img src="{% static 'hback/images/bJk.gif' %}" /></figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end banner -->
+
+    <!-- <div id="" class="hosting">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="titlepage">
+              <h2 id="signup">Start your journey with codeX</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="web_hosting"></div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- Register Form start -->
+    <div class="form-container" id="myform">
+      <form
+        class="form"
+        method="post"
+        action=""
+        enctype="multipart/form-data"
+        id="registerform"
+      >
+        {% csrf_token %}
+        <h1>codeX SignUp</h1>
+        <div class="input-group">
+          <input
+            required=""
+            type="text"
+            name="fname"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+          />
+          <label class="user-label">First Name</label>
+        </div>
+        <div class="input-group">
+          <input
+            required=""
+            type="text"
+            name="lname"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+          />
+          <label class="user-label">Last Name</label>
+        </div>
+        <div class="input-group">
+          <input
+            required=""
+            type="text"
+            name="uname"
+            id="username"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+          /><span id="username_message"></span>
+          <label class="user-label">Username</label>
+        </div>
+        <div class="input-group">
+          <input
+            required=""
+            type="password"
+            name="pass"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+            id="pass"
+          />
+          <label class="user-label">Password</label>
+        </div>
+        <div class="input-group">
+          <input
+            id="confpin"
+            required=""
+            type="password"
+            name="conpass"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+          />
+          <span id="password_message"></span>
+          <label class="user-label">Confirm Password</label>
+        </div>
+
+        <div class="input-group">
+          <input
+            required=""
+            type="email"
+            name="email"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+            id="email"
+          />
+          <span id="email_message"></span>
+          <label class="user-label">E-mail</label>
+        </div>
+        <div class="input-group">
+          <input
+            required=""
+            type="text"
+            name="phone"
+            id="phone"
+            autocomplete="on"
+            class="input"
+            aria-required="true"
+          />
+          <span id="phone_message"></span>
+          <label class="user-label">Phone</label>
+        </div>
+
+        <div class="btns">
+          <button type="submit" class="form-submit-btn" id="submit-btn">
+            Submit
+          </button>
+          <button type="reset" class="form-reset-btn" id="reset-btn">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- Register Form End -->
+
+    <!-- Services --->
+    <!-- <div id="service" class="Services">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="Services-box">
+              <i
+                ><img src="{% static 'hback/images/service1.png' %}" alt="#"
+              /></i>
+              <h3>Repository</h3>
+              <p>
+                Create your Repository with name and description where you can
+                store your projects resources
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="Services-box">
+              <i
+                ><img src="{% static 'hback/images/service2.png' %}" alt="#"
+              /></i>
+              <h3>Public Repository</h3>
+              <p>
+                You can set your repository as public for anyone to access and
+                use your codes
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="Services-box">
+              <i
+                ><img src="{% static 'hback/images/service3.png' %}" alt="#"
+              /></i>
+              <h3>Private Repository</h3>
+              <p>
+                You can set your repository as private and only the
+                collaborators you include in your project can access and manage
+                your codes.
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="Services-box">
+              <i
+                ><img src="{% static 'hback/images/service4.png' %}" alt="#"
+              /></i>
+              <h3>Post Issues</h3>
+              <p>Post any issues regarding your codes for expert solutions</p>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="Services-box">
+              <i
+                ><img src="{% static 'hback/images/service5.png' %}" alt="#"
+              /></i>
+              <h3>Better User Interface</h3>
+              <p>
+                Provides a better and simple UI where you can customize your
+                profile
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="Services-box">
+              <i
+                ><img src="{% static 'hback/images/service6.png' %}" alt="#"
+              /></i>
+              <h3>Reseller Hosting</h3>
+              <p>
+                Donec nec justo eget felis facilisis fermentum. Aliquam
+                porttitor mauris sit amet orci.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- end Servicess -->
+
+    <!-- Javascript files-->
+    <script src="{% static 'hback/js/jquery.min.js' %}"></script>
+    <script src="{% static 'hback/js/popper.min.js' %}"></script>
+    <script src="{% static 'hback/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'hback/js/jquery-3.0.0.min.js' %}"></script>
+    <script src="{% static 'hback/js/plugin.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        //validation of create password and confirmed password
+        $("#confpin").keyup(function () {
+          var password = $("#pass").val();
+          var confirmpass = $("#confpin").val();
+          if (password != confirmpass) {
+            $("#password_message")
+              .html("*Password Mismatch")
+              .css("color", "red");
+            $("#submit-btn").css("display", "none");
+          } else {
+            $("#password_message")
+              .html("*Password Matched")
+              .css("color", "green");
+            $("#submit-btn").css("display", "block");
+          }
+        });
+
+        //removes all error messages when reset button is pressed
+        $("#reset-btn").click(function () {
+          $("#username_message").html("");
+          $("#password_message").html("");
+          $("#submit-btn").css("display", "block");
+        });
+
+        //username validation using ajax
+        $("#username").keyup(function () {
+          var uname = $("#username").val();
+          $.ajax({
+            url: "/checkdata/",
+            data: {
+              Data: uname,
+            },
+            dataType: "json",
+            success: function (data) {
+              var errormsg = "*Username " + uname + " is not available";
+              var msg = "*Username " + uname + " is available";
+              if (data.exists) {
+                $("#username_message").html(errormsg).css("color", "red");
+                $("#submit-btn").css("display", "none");
+              } else {
+                $("#username_message").html(msg).css("color", "green");
+                $("#submit-btn").css("display", "block");
+              }
+            },
+          });
+        });
+
+        //Phone number validation
+        $("#phone").keyup(function () {
+          var phonenum = $(this).val();
+
+          if (phonenum.length == 10) {
+            $.ajax({
+              url: "/checkPhone/",
+              method: "POST",
+              headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+              },
+              data: { Phone: phonenum },
+              dataType: "json",
+              success: function (data) {
+                if (data.exists) {
+                  $("#phone_message")
+                    .html("*Phone number exists")
+                    .css("color", "red");
+                  $("#submit-btn").css("display", "none");
+                } else {
+                  $("#phone_message").html("");
+                  $("#submit-btn").css("display", "block");
+                }
+              },
+            });
+          } else {
+            $("#phone_message")
+              .html("*Phone number must be 10 digit")
+              .css("color", "red");
+            $("#submit-btn").css("display", "none");
+          }
+        });
+
+        //Email validation
+        $("#email").keyup(function () {
+          var Email = $(this).val();
+          $.ajax({
+            url: "/checkEmail/",
+            method: "POST",
+            headers: {
+              "X-CSRFToken": "{{ csrf_token }}",
+            },
+            data: { Email: Email },
+            dataType: "json",
+            success: function (data) {
+              console.log("rsponse", data);
+              if (data.exists) {
+                $("#email_message").html("*Email exists").css("color", "red");
+                $("#submit-btn").css("display", "none");
+              } else {
+                $("#email_message")
+                  .html("*Email available")
+                  .css("color", "green");
+                $("#submit-btn").css("display", "block");
+              }
+            },
+          });
+        });
+      });
+    </script>
+    <!-- sidebar -->
+    <script src="{% static 'hback/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'hback/js/custom.js' %}"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="{% static 'hback//js/form.js' %}"></script>
+    <script src="{% static 'hback//js/passwordConfirm.js' %}"></script>
+  </body>
+</html>

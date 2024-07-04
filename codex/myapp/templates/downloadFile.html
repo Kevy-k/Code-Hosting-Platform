@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uploaded File</title>
+  </head>
+  <body>
+    <h1>Uploaded File</h1>
+    {% if fileObj %}
+    <p>
+      Download the uploaded ZIP file:
+      <a href="{{ fileObj.myFile.url }}">Download ZIP</a>
+    </p>
+    {% else %}
+    <p>No file uploaded yet.</p>
+    {% endif %}
+  </body>
+</html>

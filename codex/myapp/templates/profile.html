@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+  </head>
+  <style>
+    body {
+      background-color: #111119;
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 350px;
+      padding: 20px;
+      border-radius: 20px;
+      position: relative;
+      background-color: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      margin: 0 auto;
+      margin-top: 150px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -1px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+      color: #00ff75;
+    }
+
+    .title::before {
+      width: 18px;
+      height: 18px;
+    }
+
+    .title::after {
+      width: 18px;
+      height: 18px;
+      animation: pulse 1s linear infinite;
+    }
+
+    .title::before,
+    .title::after {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      left: 0px;
+      background-color: #00ff75;
+    }
+
+    .message,
+    .signin {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .signin {
+      text-align: center;
+    }
+
+    .signin a:hover {
+      text-decoration: underline royalblue;
+    }
+
+    .signin a {
+      color: #00bfff;
+    }
+
+    .flex {
+      display: flex;
+      width: 100%;
+      gap: 6px;
+    }
+
+    .form label {
+      position: relative;
+    }
+
+    .form label .input {
+      background-color: #333;
+      color: #fff;
+      width: 95%;
+      padding: 20px 05px 05px 10px;
+      outline: 0;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      border-radius: 10px;
+    }
+
+    .form label .input + span {
+      color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      left: 10px;
+      top: 0px;
+      font-size: 0.9em;
+      cursor: text;
+      transition: 0.3s ease;
+    }
+
+    .form label .input:placeholder-shown + span {
+      top: 12.5px;
+      font-size: 0.9em;
+    }
+
+    .form label .input:focus + span,
+    .form label .input:valid + span {
+      color: #00ff75;
+      top: 0px;
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+
+    .input {
+      font-size: medium;
+    }
+
+    .submit {
+      border: none;
+      outline: none;
+      padding: 10px;
+      border-radius: 10px;
+      color: black;
+      font-size: 16px;
+      transform: 0.3s ease;
+      background-color: #00ff75;
+    }
+
+    .submit:hover {
+      background-color: #17844a;
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+    .custom-file-input {
+      display: none; /* Hide the default file input */
+    }
+
+    .custom-file-label {
+      background-color: #007bff; /* Set background color */
+      color: #fff; /* Set text color */
+      padding: 10px 20px; /* Add padding */
+      cursor: pointer; /* Change cursor to pointer */
+      border-radius: 5px; /* Add border radius */
+    }
+
+    /* Hover effect */
+    .custom-file-label:hover {
+      background-color: #0056b3;
+    }
+
+    /* Focus effect */
+    .custom-file-input:focus + .custom-file-label {
+      outline: 1px solid #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  </style>
+  <body>
+    <form class="form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <p class="title">Profile</p>
+      <p class="message">Fill the below form to complete your profile</p>
+      <div class="flex"></div>
+      <label>
+        <input
+          class="input"
+          type="text"
+          placeholder=""
+          required
+          name="designation"
+        />
+        <span>Designation</span>
+      </label>
+      <label class="custom-file-label">
+        Choose profile photo
+        <input
+          class="custom-file-input"
+          type="file"
+          placeholder=""
+          required
+          accept="image/*"
+          name="pic"
+        />
+      </label>
+
+      <button class="submit">Update Profile</button>
+    </form>
+  </body>
+</html>

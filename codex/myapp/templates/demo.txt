@@ -1,0 +1,174 @@
+from django.shortcuts import render,redirect
+from django.http import JsonResponse
+from myapp.models import userreg,profile,Repository
+from django.contrib import messages
+
+
+# Create your views here.
+
+def index(request):
+    return render(request,'index.html')
+
+#user account register
+def register(request):
+    if 'username' in request.session:
+        return redirect(user_Home)
+    if request.method=="POST":
+        firstname=request.POST.get('fname')
+        lastname=request.POST.get('lname')
+        usrname=request.POST.get('uname')
+        paswrd=request.POST.get('pass')
+        mail=request.POST.get('email')
+        ph=request.POST.get('phone')
+        r=userreg(fname=firstname,lname=lastname,uname=usrname,pwrd=paswrd,email=mail,phone=ph)
+        r.save()
+        return redirect('/wlcm/')
+    return render(request,'home.html')
+
+
+#welcome page after user registering account
+def welcomePage(request):
+    return render(request,'userWelcome.html')
+    
+#user login with session
+def user_login(request):
+    if 'username' in request.session:
+        return redirect(user_Home)
+    if request.method=="POST":
+        Uname=request.POST.get('usrname')
+        Pass=request.POST.get('pass')
+        if userreg.objects.filter(uname=Uname).exists():
+            userdata=userreg.objects.get(uname=Uname)
+            if userdata.pwrd==Pass:
+                request.session['username']=Uname
+                return redirect(user_Home)
+            else:
+                messages.error(request,'Invalid Password')
+        else:
+            messages.error(request,'Invalid Username')
+    return render(request,'login.html')
+
+
+
+
+
+#user session logout
+def user_logout(request):
+    if 'username' in request.session:
+        request.session.flush()
+    return redirect('/h/')
+
+#user home Page
+def user_Home(request):
+    if 'username' in request.session:
+        usrname=request.session.get('username')
+        try:
+            user_data=userreg.objects.get(uname=usrname)
+            check_username=profile.objects.filter(uname=usrname).exists()
+            if check_username:
+                Profile=profile.objects.get(uname=usrname)
+                userdata={
+                    'fname':user_data.fname,
+                    'lname':user_data.lname,
+                    'uname':user_data.uname,
+                    'password':user_data.pwrd,
+                    'email':user_data.email,
+                    'phone':user_data.phone,
+                    'createdAt':user_data.at,
+                    'profile_data':{
+                        'designation':Profile.designation,
+                        'pic':Profile.photo,
+                    }
+                }
+                return render(request,'user_Home.html',{'userdata':userdata})
+            else:
+                return redirect(update_Profile)
+        except profile.DoesNotExist:
+            return redirect(update_Profile)
+        except userreg.DoesNotExist:
+            return redirect(user_login)
+    return redirect(user_login)
+
+
+
+#update Profile
+def update_Profile(request):
+    if 'username' in request.session:
+       
+        if request.method=='POST':
+            username=request.session.get('username')
+            try:
+                usrprofile=profile.objects.get(uname=username)
+                usrprofile.designation=request.POST.get('designation')
+                usrprofile.photo=request.FILES['pic']
+                usrprofile.save()
+                return redirect(user_Home)
+            except userreg.DoesNotExist:
+                return redirect(user_login)
+            except profile.DoesNotExist:
+                dsg=request.POST.get('designation')
+                pic=request.FILES['pic']
+                p=profile(uname=username,designation=dsg,photo=pic)
+                p.save()
+                return redirect(user_Home)
+    return render(request,'profile.html')
+
+#ajax live validation of username for user registration
+def liveCheck(request):
+    data={}
+    mydata=request.GET.get('Data')
+    if userreg.objects.filter(uname=mydata).exists():
+        data['exists']=True
+    else:
+        data['exists']=False
+    return JsonResponse(data)
+
+#ajax live validation of phone number for user registration
+
+def phoneCheck(request):
+    data={}
+    phonenum=request.POST.get('Phone')
+    if userreg.objects.filter(phone=phonenum).exists():
+        data['exists']=True
+    else:
+        data['exists']=False
+    return JsonResponse(data)
+
+def RepositoryHome(request):
+     if 'username' in request.session:
+        usrname=request.session.get('username')
+        try:
+            user_data=userreg.objects.get(uname=usrname)
+            check_username=profile.objects.filter(uname=usrname).exists()
+            if check_username:
+                Profile=profile.objects.get(uname=usrname)
+                userdata={
+                    'fname':user_data.fname,
+                    'lname':user_data.lname,
+                    'uname':user_data.uname,
+                    'password':user_data.pwrd,
+                    'email':user_data.email,
+                    'phone':user_data.phone,
+                    'createdAt':user_data.at,
+                    'profile_data':{
+                        'designation':Profile.designation,
+                        'pic':Profile.photo,
+                    }
+                }
+                if request.method=='POST':
+                    reponame=request.POST.get('repo-name')
+                    type=request.POST.get('repoType')
+                    description=request.POST.get('description')
+                    r=Repository(repoName=reponame,type=type,discription=description)
+                    r.save()
+                return render(request,'repository.html',{'userdata':userdata})
+            else:
+                return redirect(update_Profile)
+        except profile.DoesNotExist:
+            return redirect(update_Profile)
+        except userreg.DoesNotExist:
+            return redirect(user_login)
+
+def checkReponame(request):
+    response={}
+    return JsonResponse(response)

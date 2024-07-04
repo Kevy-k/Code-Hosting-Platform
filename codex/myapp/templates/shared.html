@@ -1,0 +1,537 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>codeX| Dashboard</title>
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      name="viewport"
+    />
+    <!-- Bootstrap 3.3.2 -->
+    <link
+      href="{% static 'hback/bootstrap/css/bootstrap.min.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- FontAwesome 4.3.0 -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Ionicons 2.0.0 -->
+    <link
+      href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Theme style -->
+    <link href="{% static 'hback/css/userHome.css'%}" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link
+      href="{% static 'hback/dist/css/skins/_all-skins.min.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- iCheck -->
+    <link
+      href="{% static 'hback/plugins/iCheck/flat/blue.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Morris chart -->
+    <!-- <link href="plugins/morris/morris.css" rel="stylesheet" type="text/css" /> -->
+    <!-- jvectormap -->
+    <link
+      href="{% static 'hback/plugins/jvectormap/jquery-jvectormap-1.2.2.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Date Picker -->
+    <link
+      href="{% static 'hback/plugins/datepicker/datepicker3.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Daterange picker -->
+    <link
+      href="{% static 'hback/plugins/daterangepicker/daterangepicker-bs3.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link
+      href="{% static 'hback/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'%}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="skin-blue">
+    <div class="wrapper">
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="" class="logo"><b>Code</b>X</a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a
+            href="#"
+            class="sidebar-toggle"
+            data-toggle="offcanvas"
+            role="button"
+          >
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="label label-success"></span>
+                </a>
+                
+              </li>
+              <!-- Notifications: style can be found in dropdown.less -->
+              <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bell-o"></i>
+                  <span class="label label-warning"></span>
+                </a>
+              
+              </li>
+              <!-- Tasks: style can be found in dropdown.less -->
+              <li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-flag-o"></i>
+                  <span class="label label-danger"></span>
+                </a>
+              
+              </li>
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img
+                    src="{{userdata.profile_data.pic.url}}"
+                    class="user-image"
+                    alt="User Image"
+                  />
+                  <span class="hidden-xs">{{userdata.fname}}  {{userdata.lname}}</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <img
+                      src="{{userdata.profile_data.pic.url}}"
+                      class="img-circle"
+                      alt="User Image"
+                    />
+                    <p>
+                      <h5>{{userdata.uname}} - {{userdata.profile_data.designation}}</h5>
+                      
+                      <p><small>Member since {{userdata.createdAt}}</small></p>
+                    </p>
+                  </li>
+                  <!-- Menu Body -->
+                  
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="/updateProfile/" class="btn btn-default btn-flat">Update Profile</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="/usrlogout/" class="btn btn-default btn-flat">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img
+                src="{{userdata.profile_data.pic.url}}"
+                class="img-circle"
+                alt="User Image"
+              />
+            </div>
+            <div class="pull-left info">
+              <p>{{userdata.fname}}  {{userdata.lname}}</p>
+
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+          </div>
+          <!-- search form -->
+        
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+          
+            <li class="active treeview">
+              <a href="/userHome/">
+                 <span>Home</span>
+              </a>
+            </li>
+
+            <li class="treeview">
+              <a href="/repo/">
+                <i class="fa fa-folder"></i> <span>Repository</span>
+              </a>
+            
+            </li>
+            <li class="treeview">
+              <a href="/sharedwithme/">
+                <i class="fa fa-share"></i> <span>Shared with me</span>
+              </a>
+            
+            </li>
+            <li class="treeview">
+              <a href="/deleteAccount/">
+                <i class="fa fa-share"></i> <span>Delete Account/Repository</span>
+              </a>
+            
+            </li>
+           
+
+           
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Right side column. Contains the navbar and content of the page -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Shared with me
+          </h1>
+          <ol class="breadcrumb">
+            <li>
+              <a href="#"><i class="fa fa-dashboard"></i> Home</a>
+            </li>
+            <li class="active">shared with me</li>
+          </ol>
+        </section>
+
+            <div class="mainContent">
+                <!--  -->
+                <div class="addProject">
+                    <h3>Commit Project</h3>
+                    <form action="" enctype="multipart/form-data" name="addProject" method="post">
+                      {%csrf_token%}
+                    <select name="RepoID" id="reposelect" required>
+                      {% for s in shared%}
+                        {%if s.repository.type is "public"%}
+                      <option value="{{s.repository.id}}">{{s.repository.repoName}}</option>
+                        {%endif%}
+                      {% endfor %}
+                    </select>
+                    <div id="input-flex">
+                      <input type="file" accept=".zip,.rar,application/x-rar-compressed,application/zip" required name="files">
+                      <button type="submit" id="submit" name="form2-submit">Commit </button>
+                    </div> 
+                  </form>
+                  <p style="color: red;">*You can only commit to public repositories</p>
+                  </div>
+
+                  <!--  -->
+                <div class="showRepos">
+                    <h3>Shared Repositories (1)</h3>
+                    <form class="sidebar-form">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          name="q"
+                          class="form-control"
+                          placeholder="Search..."
+                          id="searchBox"
+                        />
+                        <span class="input-group-btn">
+                          <button
+                            type="submit"
+                            name="search"
+                            id="search-btn"
+                            class="btn btn-flat"
+                          >
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </form>
+                    {% for s in shared %}
+                   
+                      <a href="/openSharedRepo/?param1={{s.repository.id}}">
+                      <div class="lists" data-repo-id="{{repo.id}}">
+                        <input type="hidden" class="access-mode" data-repo="{{s.repository.type}}">
+                        <h5><i class="fa fa-folder"></i>{{s.repository.repoName}}</h5>
+                        <div class="IconPrivate">
+                          <h5><i class="fa fa-lock"></i></h5>
+                        </div>
+                      </div></a>
+                    
+                      {% endfor %}
+                  </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+
+<style>
+
+::-webkit-scrollbar{
+    display: none;
+}
+.showRepos{
+      color:  white;
+      padding: 20px;
+      margin-left: 50px;
+      margin-top: 30px;
+      width: 600px;
+      border:none;
+      background-color: rgb(61, 61, 61);
+      height:630px;
+      opacity: .7;
+      border-radius: 10px;
+      overflow: auto;
+    }
+    .showRepos .lists{
+      display: flex;
+      background-color: #111119;
+      width: 500px;
+      height: 45px;
+      border-radius: 12px;
+      padding: 5px;
+      margin-bottom: 20px;
+      margin-left: 10px;
+      
+    }
+    .showRepos i{
+      padding: 5px;
+    }
+ .lists:hover{
+     background-color: rgb(0, 0, 0);
+     transition: 0.5s;
+    }
+  .IconPrivate{
+    margin-left: auto;
+  }
+ .Btn1{
+  margin-top: 18px;
+  background-color: transparent;
+  height: 50px;
+  border: none;
+ }
+ .addProject{
+      color: white;
+      padding: 10px;
+      margin-left: 50px;
+      margin-top: 30px;
+      width: 500px;
+      border:1px solid #87f031;
+      /* box-shadow: 0px 0px 20px 2px #17d84e; */
+      height:200px;
+      opacity: .7;
+      border-radius: 10px;
+    }
+    .addProject select{
+      width: 300px;
+      height: 40px;
+      padding: 5px;
+      background-color: transparent;
+      opacity: 1;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+    }
+    .addProject option{
+      background-color: #111119;
+    }
+    .addProject input{
+      margin-top: 20px;
+      width: 300px;
+      height: 40px;
+      padding: 5px;
+      background-color: transparent;
+      opacity: 1;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+    }
+    .addProject #submit{
+      background-color: #87f031!important;
+      width: 100px;
+      color: black;
+      border: none;
+      font-weight: 600;
+      border-radius: 0px 10px 0px 10px;
+      margin-top: 20px;
+    }
+    #input-flex{
+      display: flex;
+      column-gap: 20px;
+    }
+
+    @media (max-width:900px) {
+      .addProject{
+        width: 400px;
+      }
+    }
+    @media (max-width:700px) {
+      .addProject{
+        width: 280px;
+        
+      }
+      .addProject select{
+        width: 120px;
+        height:50px;
+      }
+      .container1{
+        gap:20px;
+      }
+      
+    }
+.mainContent{
+    background-color: #111119;
+    height: 700px;
+    padding: 20px;
+    display: flex;
+    column-gap: 100px;
+}
+.sharedProjects{
+    width: 300px;
+    height: 300px;
+    background-color: black ;
+}
+.commitProjects
+{
+    width: 300px;
+    height: 300px;
+    background-color: red;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <!-- //to display private icon in repository dynamically -->
+   <script>
+    $(document).ready(function(){
+      var repoItems=document.querySelectorAll('.lists');
+      repoItems.forEach(function(repoItem){
+        var accessMode=$(repoItem).find('.access-mode').data('repo');
+        if(accessMode=="private"){
+          $(repoItem).find('.IconPrivate').css('display','block');
+        }
+        else{
+          $(repoItem).find('.IconPrivate').css('display','none');
+        }
+      });
+    });
+  </script>
+
+  <!--ajax to open the user clicked repository along with data-->
+  <script>
+    $(document).ready(function(){
+      $('.Btn1').click(function(){
+        var yes="Yes";
+        console.log('Clicked:',yes)
+        var RepoId=$(this).find('.lists').data('repo-id');
+        $.ajax({
+          url:'/openSharedRepo/',
+          data:{
+            ID:RepoId
+          },
+          headers:{
+            "X-CSRFToken":"{{csrf_token}}",
+          },
+          dataType:'json',
+          method:'POST',
+          success:function(){},
+
+        });
+      });
+    });
+  </script>
+    <!-- jQuery 2.1.3 -->
+   
+    <script src="{% static 'hback/plugins/jQuery/jQuery-2.1.3.min.js'%}"></script>
+    <!-- jQuery UI 1.11.2 -->
+    <script
+      src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"
+      type="text/javascript"
+    ></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="{% static 'hback/bootstrap/js/bootstrap.min.js'%}" type="text/javascript"></script>
+    <!-- Morris.js charts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="{% static 'hback/plugins/morris/morris.min.js'%}" type="text/javascript"></script>
+    <!-- Sparkline -->
+    <script
+      src="{% static 'hback/plugins/sparkline/jquery.sparkline.min.js'%}"
+      type="text/javascript"
+    ></script>
+    <!-- jvectormap -->
+    <script
+      src="{% static 'hback/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'%}"
+      type="text/javascript"
+    ></script>
+    <script
+      src="{% static 'hback/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'%}"
+      type="text/javascript"
+    ></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{% static 'hback/plugins/knob/jquery.knob.js'%}" type="text/javascript"></script>
+    <!-- daterangepicker -->
+    <script
+      src="{% static 'hback/plugins/daterangepicker/daterangepicker.js'%}"
+      type="text/javascript"
+    ></script>
+    <!-- datepicker -->
+    <script
+      src="{% static 'hback/plugins/datepicker/bootstrap-datepicker.js'%}"
+      type="text/javascript"
+    ></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script
+      src="{% static 'hback/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'%}"
+      type="text/javascript"
+    ></script>
+    <!-- iCheck -->
+    <script src="{% static 'hback/plugins/iCheck/icheck.min.js'%}" type="text/javascript"></script>
+    <!-- Slimscroll -->
+    <script
+      src="{% static 'hback/plugins/slimScroll/jquery.slimscroll.min.js'%}"
+      type="text/javascript"
+    ></script>
+    <!-- FastClick -->
+    <script src="{% static 'hback/plugins/fastclick/fastclick.min.js'%}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'hback/dist/js/app.min.js'%}" type="text/javascript"></script>
+
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{% static 'hback/dist/js/pages/dashboard.js'%}" type="text/javascript"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="{% static 'hback/dist/js/demo.js'%}" type="text/javascript"></script>
+    
+  </body>
+</html>

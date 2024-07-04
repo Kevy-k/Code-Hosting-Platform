@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading</title>
+  </head>
+  <script>
+    setTimeout(function () {
+      window.location.href = "/h/";
+    }, 3000);
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      background-color: black;
+      color: white;
+    }
+    .LOGO {
+      padding-left: 20px;
+      margin: 0 auto;
+      margin-top: 300px;
+      width: 320px;
+      /* animation: logo 1.5s infinite; */
+      font-size: 40px;
+    }
+    h1 {
+      animation: logo 1s forwards;
+      /* text-shadow: 0px 5px 30px rgb(212, 212, 212); */
+    }
+    p {
+      margin-top: -40px;
+      padding-left: 100px;
+      animation: details 2s forwards;
+      font-size: large;
+      color: rgb(76, 243, 64);
+    }
+    @keyframes logo {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes details {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    /* @keyframes logo {
+      0% {
+      }
+      20% {
+        text-shadow: 0px 5px 30px rgb(29, 240, 13);
+      }
+      30% {
+        text-shadow: 0px 8px 25px rgb(29, 240, 13);
+      }
+      40% {
+        text-shadow: 0px 11px 20px rgb(29, 240, 13);
+      }
+      50% {
+        text-shadow: 0px 15px 15px rgb(29, 240, 13);
+      }
+      60% {
+        text-shadow: 0px 18px 10px rgb(29, 240, 13);
+      }
+      70% {
+        text-shadow: 0px 20px 8px rgb(29, 240, 13);
+      }
+      100% {
+        text-shadow: 0px 25px 5px rgb(29, 240, 13);
+      } 
+    }*/
+  </style>
+  <body>
+    <div class="LOGO">
+      <h1>codeX</h1>
+      <p>-A code hosting platform</p>
+    </div>
+  </body>
+</html>
